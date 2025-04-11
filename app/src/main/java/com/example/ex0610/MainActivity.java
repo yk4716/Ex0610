@@ -28,21 +28,30 @@ public class MainActivity extends AppCompatActivity {
         tb = (ToggleButton) findViewById(R.id.tb);
         swDN = (Switch) findViewById(R.id.swDN);
         btn = (Button) findViewById(R.id.btn);
+        mainLayout = findViewById(R.id.mainLayout);
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                go(v);
+            }
+        });
     }
 
     public void go(View view) {
         boolean switchState = swDN.isChecked();
         boolean toggleState = tb.isChecked();
 
-        if (switchState && toggleState) {
-            mainLayout.setBackgroundColor(Color.RED);
+        if (!switchState && !toggleState) {
+            mainLayout.setBackgroundColor(Color.WHITE);
         } else if (switchState && !toggleState) {
-            mainLayout.setBackgroundColor(Color.BLUE);
-        } else if (!switchState && toggleState) {
             mainLayout.setBackgroundColor(Color.GREEN);
+        } else if (!switchState && toggleState) {
+            mainLayout.setBackgroundColor(Color.BLUE);
         } else {
             mainLayout.setBackgroundColor(Color.YELLOW);
         }
+
+
     }
 }
